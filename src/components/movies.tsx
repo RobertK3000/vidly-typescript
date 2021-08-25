@@ -1,19 +1,34 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { getMovies } from '../services/fakeMovieService';
+import { getGenres } from "../services/fakeGenreService";
 
-export interface MoviesProps {
-  
+
+interface MoviesProps {
+  _id?: string,
+  title?: string,
+  genre?: GenreProps,
+  numberInStock?: number,
+  dailyRentalRate?: number,
+  publishedDate?: string,
+  liked?: boolean
+}
+
+interface GenreProps {
+  _id: string,
+  name: string,
 }
  
-export interface MoviesState {
-  movies: getMovies();
+interface MoviesState {
+  movies: MoviesProps[]
+  genres: GenreProps[]
 }
  
 class Movies extends React.Component<MoviesProps, MoviesState> {
-  state = { 
-    MoviesState;
-   }
+  state: MoviesState = { 
+    movies: getMovies(),
+    genres: getGenres()
+   } 
   render() { 
     return ( <table className="table">
       <thead>
